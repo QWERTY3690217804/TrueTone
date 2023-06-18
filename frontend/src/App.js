@@ -102,7 +102,7 @@ export default function App() {
         ? chats.map((chat, index) => (
           <p key = {index} className = {chat.role === "user" ? "user_msg" : ""}>
             <span>
-            {chat.role === "user" ? (<b style={{color: "rgb(26, 102, 194)", fontSize: '250%', fontFamily: 'Merriweather'}}>{chat.content}</b>) : 
+            {chat.role === "user" ? (<b style={{color: "#1c1407", fontSize: '250%', fontFamily: 'Merriweather'}}>{chat.content}</b>) : 
             (<b>{chat.content}</b>)}
             </span>
           </p>
@@ -120,7 +120,7 @@ export default function App() {
           type="text"
           name="message"
           value={message}
-          placeholder="Write a responses to fit the tone you're given!"
+          placeholder="Write a response to fit the tone you're given!"
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={(e) => {
             /*
@@ -134,9 +134,9 @@ export default function App() {
         />
       </form>
       <button onClick={ submitMessage1 }>Submit</button>
-      <p className="results">{ (data) ? `${data[0]["name"]}: ${data[0]["score"]}` : `` }</p>
-      <p className="results">{ (data) ? `${data[1]["name"]}: ${data[1]["score"]}` : `` }</p>
-      <p className="results">{ (data) ? `${data[2]["name"]}: ${data[2]["score"]}` : `` }</p>
+      <p className="results">{ (data) ? `${data[0]["name"]}: ${data[0]["score"]}` : `Sadness: 65.42` }</p>
+      <p className="results">{ (data) ? `${data[1]["name"]}: ${data[1]["score"]}` : `Determined: 45.67` }</p>
+      <p className="results">{ (data) ? `${data[2]["name"]}: ${data[2]["score"]}` : `Lust: 13.67  ` }</p>
     </div>
   );
 };
