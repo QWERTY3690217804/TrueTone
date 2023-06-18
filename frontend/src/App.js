@@ -5,7 +5,7 @@ import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
   organization: "org-f1nNrrADJiLslpZv63AmaygR",
-  apiKey: "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",
+  apiKey: "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",
 });
 
 const openai = new OpenAIApi(configuration);
@@ -66,7 +66,9 @@ export default function App() {
       });
   };
   
-  const submitMessage = () => {
+  const submitMessage = (e) => {
+    e.preventDefault();
+    chat(e, " ");
     fetch('http://localhost:5000/api/data', {
       method: 'POST',
       headers: {
@@ -94,7 +96,7 @@ export default function App() {
           </p>
         )) : ""}
       </section>
-      <button onClick={ submitMessage }>Generate</button>
+      <button onClick={submitMessage}>Generate</button>
       </div>
       <div className={isTyping ? "" : "hide"}>
         <p>
@@ -109,10 +111,13 @@ export default function App() {
           placeholder="Write a response to fit the tone you're given!"
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={(e) => {
+            /*
             if (e.key === "Enter" && !e.shiftKey) {
               e.preventDefault();
               chat(e, message);
+
             }
+            */
           }}
         />
       </form>
