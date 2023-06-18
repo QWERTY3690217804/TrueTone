@@ -5,7 +5,7 @@ import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
   organization: "org-f1nNrrADJiLslpZv63AmaygR",
-  apiKey: "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",
+  apiKey: "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"
 });
 
 const openai = new OpenAIApi(configuration);
@@ -78,6 +78,18 @@ export default function App() {
     }).then(output => output.json()).then(data => setData(data))
   }
 
+  const submitMessage1 = (e) => {
+    e.preventDefault();
+    //chat(e, " ");
+    fetch('http://localhost:5000/api/data', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'text/plain',
+      },
+      body: message,
+    }).then(output => output.json()).then(data => setData(data))
+  }
+
   return (
     //if print is true, print data. else null
     // each time input is changed, call getData()
@@ -108,7 +120,7 @@ export default function App() {
           type="text"
           name="message"
           value={message}
-          placeholder="Write a response to fit the tone you're given!"
+          placeholder="Write a responses to fit the tone you're given!"
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={(e) => {
             /*
@@ -121,7 +133,7 @@ export default function App() {
           }}
         />
       </form>
-      <button onClick={ submitMessage }>Submit</button>
+      <button onClick={ submitMessage1 }>Submit</button>
       <p className="results">{ (data) ? `${data[0]["name"]}: ${data[0]["score"]}` : `` }</p>
       <p className="results">{ (data) ? `${data[1]["name"]}: ${data[1]["score"]}` : `` }</p>
       <p className="results">{ (data) ? `${data[2]["name"]}: ${data[2]["score"]}` : `` }</p>
