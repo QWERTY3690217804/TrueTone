@@ -122,10 +122,9 @@ export default function App() {
         />
       </form>
       <button onClick={ submitMessage }>Submit</button>
-      <p>Top Emotions:</p>
-      <p>{ (data) ? `${data[0]["name"]}: ${data[0]["score"]}` : 0 }</p>
-      <p>{ (data) ? `${data[1]["name"]}: ${data[1]["score"]}` : 0 }</p>
-      <p>{ (data) ? `${data[2]["name"]}: ${data[2]["score"]}` : 0 }</p>
+      <p className="results">{ (data) ? `${data[0]["name"]}: ${data[0]["score"]}` : `` }</p>
+      <p className="results">{ (data) ? `${data[1]["name"]}: ${data[1]["score"]}` : `` }</p>
+      <p className="results">{ (data) ? `${data[2]["name"]}: ${data[2]["score"]}` : `` }</p>
     </div>
   );
 };
