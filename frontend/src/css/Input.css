@@ -13,50 +13,85 @@ body {
   text-align: center;
 }
 
-.main {
-  width: 70vw;
-  margin: auto;
+.mainMain {
+  width:100vw;
+  height:100vh;
 }
 
-.frame {
-  display:flex;
-  justify-content: space-evenly;
-  height:60vh;
+.main {
+  width: 100vw;
+  height:70%;
+  margin-top:-5%;
+  display: flex;
+  justify-content: start;
+}
+
+.aiSide {
+  display: flex;
+  flex-direction:column;
+  width:50%;
+}
+
+.humanSide {
+  display: flex;
+  flex-direction:column;
+  width:50%;
+}
+
+.generateButton {
+  margin-top:5%;
+  margin-left:37%;
+  padding:3%;
+}
+
+.submitButton {
+  margin-left:40%;
+  margin-bottom: 20%;
+  padding:3%;
 }
 
 .formField {
   font-size: 17px;
   font-family: 'Merriweather';
-  color:white;
-  margin-top:3%;
+  color:black;
+  margin-top:2%;
+  width:70%;
+}
+
+.formField {
+  width:100%;
+  height:100%;
 }
 
 .inputField {
-  width:45%;
-  height:45%;
+  width:65%;
+  height:55%;
   padding:3%;
-  margin-top:11%;
+  margin-top:8%;
   background-color:white;
   border-radius: 7%;
-  position:relative;
   font-family: 'Quicksand';
   font-weight:bold;
   font-size: 25px;
   outline: none;
-  resize: none
+  resize: none;
+  box-shadow:3px 3px 5px #DFAE8D;
+  border-color: #946422;
 }
 
 .chatField {
-  width:45%;
-  height:45%;
+  width:70%;
+  height:30%;
   padding:3%;
   margin-top:11%;
+  margin-left:10%;
   background-color:rgb(255, 255, 255);
   border-radius:7%;
   position:relative;
   font-family: 'Quicksand';
   color:#A44565;
   box-shadow:3px 3px 5px #DFAE8D;
+  font-size:100%;
 }
 
 .textInfo {
@@ -74,6 +109,7 @@ h1 {
   font-family: 'Merriweather';
   letter-spacing: normal;
   transition: 0.3s; 
+  text-align: center;
 }
 
 h1:hover {
@@ -96,4 +132,14 @@ button {
   border: none;
   border-radius: 12px;
   cursor: pointer;
+}
+
+.results1 {
+  color:rgb(112, 73, 21);
+  font-family:"Merriweather";
+  font-size:200%;
+  position:absolute;
+  top:64%;
+  left:32%;
+  text-align: center;
 }

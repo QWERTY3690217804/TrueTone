@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './css/Input.css';
 import { Configuration, OpenAIApi } from "openai";
+import logo from './css/assets/load.gif';
 //importing useState from react
 
 const configuration = new Configuration({
   organization: "org-f1nNrrADJiLslpZv63AmaygR",
-  apiKey: "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"
+  apiKey: "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"
 });
 
 const openai = new OpenAIApi(configuration);
@@ -94,49 +95,48 @@ export default function App() {
     //if print is true, print data. else null
     // each time input is changed, call getData()
     // on click, set print to true.
-    <div className = "main">
-      <h1>TrueTone</h1>
-      <div className = "promptBox">
-      <section className = "chatField">
-        {chats && chats.length
-        ? chats.map((chat, index) => (
-          <p key = {index} className = {chat.role === "user" ? "user_msg" : ""}>
-            <span>
-            {chat.role === "user" ? (<b style={{color: "#1c1407", fontSize: '250%', fontFamily: 'Merriweather'}}>{chat.content}</b>) : 
-            (<b>{chat.content}</b>)}
-            </span>
-          </p>
-        )) : ""}
-      </section>
-      <button onClick={submitMessage}>Generate</button>
+    
+    <div className = "mainMain">
+      <h1 style={{ top: "10%"}}>TrueTone</h1>
+      <div className = "main">
+        
+        <section className = "aiSide">
+          <section className = "chatField">
+            {chats && chats.length
+            ? chats.map((chat, index) => (
+              <p key = {index} className = {chat.role === "user" ? "user_msg" : ""}>
+                <span>
+                {chat.role === "user" && !isTyping ? (<b style={{color: "rgb(127, 172, 227);", fontSize: '270%', fontFamily: 'Merriweather'}}>{chat.content}</b>) : 
+                (
+                  isTyping ? <img src={logo} width="50%"/> : (chat.role !== "user" && <b>{chat.content}</b>)
+                )}
+                </span>
+              </p>
+            ))
+            : ""}
+          </section>
+          <button className = "generateButton" onClick={submitMessage}>Generate</button>
+        </section>
+        <div className = "humanSide">
+          <form className = "formField" action="" onSubmit = {(e) => chat(e, message)}>
+            <textarea className = "inputField"
+              type="text"
+              name="message"
+              value={message}
+              placeholder="Write a response to fit the tone you're given!"
+              onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={(e) => {
+              }}
+            />
+          </form>
+          <button className = "submitButton" onClick={ submitMessage1 }>Submit</button>
+        </div>
       </div>
-      <div className={isTyping ? "" : "hide"}>
-        <p>
-          <i>{isTyping ? "Loading.." : ""}</i>
-        </p>
-      </div>
-      <form className = "formField" action="" onSubmit = {(e) => chat(e, message)}>
-        <textarea className = "inputField"
-          type="text"
-          name="message"
-          value={message}
-          placeholder="Write a response to fit the tone you're given!"
-          onChange={(e) => setMessage(e.target.value)}
-          onKeyDown={(e) => {
-            /*
-            if (e.key === "Enter" && !e.shiftKey) {
-              e.preventDefault();
-              chat(e, message);
-
-            }
-            */
-          }}
-        />
-      </form>
-      <button onClick={ submitMessage1 }>Submit</button>
-      <p className="results">{ (data) ? `${data[0]["name"]}: ${data[0]["score"]}` : `Sadness: 65.42` }</p>
-      <p className="results">{ (data) ? `${data[1]["name"]}: ${data[1]["score"]}` : `Determined: 45.67` }</p>
-      <p className="results">{ (data) ? `${data[2]["name"]}: ${data[2]["score"]}` : `Lust: 13.67  ` }</p>
+      <div className = "results1">
+          <p className="results">{ (data) ? `${data[0]["name"]}: ${data[0]["score"]}` : `` }</p>
+          <p className="results">{ (data) ? `${data[1]["name"]}: ${data[1]["score"]}` : `` }</p>
+          <p className="results">{ (data) ? `${data[2]["name"]}: ${data[2]["score"]}` : `` }</p>
+        </div>
     </div>
   );
 };
